@@ -1,0 +1,26 @@
+Nume: Popescu
+Prenume: Raluca-Elena
+Grupa: 333CA
+
+    Conform enuntului, am folosit metoda createTaskMap pentru a parcurge fisierele
+de intrare si a crea task-urile de tip Map impartind fisierele in fragmente 
+de dimensiune fixa, in functie de valoarea primita ca argument.
+    Task-urile sunt alocate worker-ilor folosindu-se ExecutorService invokeAll.
+Aceasta primeste o lista de Callable task-uri si returneaza o lista de obiecte
+Future, in cazul de fata ResultMap. Pentru fiecare task, un worker isi verifica 
+fragmentul din fisierul de intrare pentru a nu pastra cuvintele care se afla la mijloc 
+la inceputul fragmentului si pentru a le adauga pe cele care se afla la mijloc 
+la finalul fragmentului.
+    Pentru a crea task-urile de tip Reduce, se apeleaza metoda createTaskReduce
+care parcurge fisierele de intrare si creeaza dictionarul si lista de cuvinte
+de lungime maxima folosindu-se de rezultatele operatiei Map. Se elimina calea catre
+fisierele de intrare si se pastreaza doar numele propriu-zis al acestora. 
+    Aceste task-uri sunt la randul lor alocate worker-ilor prin ExecutorService 
+invokeAll, dar de aceasta data se va returna o lista de obiecte Future de tipul
+ResultReduce. Pentru fiecare task, un worker parcurge dictionarul si calculeaza
+formula numaratorului folosindu-se de metoda nthFibonacciTerm pentru a obtine
+valoarea dorita din sirul lui Fibonacci. De asemenea, se parcurge lista de liste
+de cuvinte maxime si se verifica care este lungimea maxima si cate cuvinte au aceasta
+lungime.
+    Rezultatele obtinute in urma operatiei de Reduce sunt sortate dupa rang si
+trimise catre metoda writeOutputFile care le va scrie in fisierul de iesire.
