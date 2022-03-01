@@ -1,1 +1,1 @@
-# Document-processing
+Parallel program in Java which processes a set of text documents evaluating the length, order and frequency in which the words appear. The program uses the Map-Reduce model, similar to the one used by Google for processing large data in distributed systems. The map and reduce tasks are carried out using the JDK API Executor Service which receives Callable tasks and returns Future objects.
